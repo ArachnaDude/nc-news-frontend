@@ -6,6 +6,7 @@ const Articles = () => {
   const [articleList, setArticleList] = useState([]);
 
   const { topic } = useParams();
+
   useEffect(() => {
     getArticles(topic).then((articlesFromApi) => {
       setArticleList(articlesFromApi);
@@ -18,12 +19,12 @@ const Articles = () => {
         {articleList.map((article) => {
           return (
             <li key={article.article_id}>
-              <Link to={`articles/${article.article_id}`}>
+              <Link to={`/article/${article.article_id}`}>
                 <h4>{article.title}</h4>
               </Link>
               <p>{article.votes} votes</p>
               <p>
-                Authored by: {article.author} at {article.created_at}
+                Posted by {article.author} at {article.created_at}
               </p>
               <p>{article.comment_count} comments</p>
             </li>
