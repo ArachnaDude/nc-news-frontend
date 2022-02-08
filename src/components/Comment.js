@@ -8,8 +8,9 @@ const Comment = ({ comment }) => {
     setLocalVote((currentValue) => {
       return currentValue + 1;
     });
-    patchCommentVotes(comment.comment_id);
+    patchCommentVotes(comment.comment_id, 1);
   };
+
   return (
     <li key={comment.comment_id}>
       <p>

@@ -30,17 +30,9 @@ export const patchArticleVotes = (article_id, votes) => {
     });
 };
 
-// export const patchArticleVotesDown = (article_id) => {
-//   return newsAPI
-//     .patch(`articles/${article_id}`, { inc_votes: -1 })
-//     .then((result) => {
-//       console.log(result.data.article.votes);
-//     });
-// };
-
-export const patchCommentVotes = (comment_id) => {
+export const patchCommentVotes = (comment_id, votes) => {
   return newsAPI
-    .patch(`/comments/${comment_id}`, { inc_votes: 1 })
+    .patch(`/comments/${comment_id}`, { inc_votes: votes })
     .then((result) => {
       return result.data.comment;
     });

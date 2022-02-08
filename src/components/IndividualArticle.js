@@ -2,13 +2,13 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getSingleArticle, getComments, patchArticleVotes } from "../utils/api";
 import Expandable from "./Expandable";
-
 import Comment from "./Comment";
 
 const IndividualArticle = () => {
   const { article_id } = useParams();
   const [currentArticle, setCurrentArticle] = useState({});
   const [comments, setComments] = useState([]);
+  const [localVote, setLocalVote] = useState(0);
 
   useEffect(() => {
     getSingleArticle(article_id).then((singleArticle) => {
@@ -19,14 +19,35 @@ const IndividualArticle = () => {
     });
   }, [article_id]);
 
+  const handleVotes = (clickDirection) => {
+    setLocalVote((currentValue) => {
+      return currentValue + clickDirection;
+    });
+    patchArticleVotes(article_id, clickDirection);
+  };
+
   return (
     <>
       <h2>{currentArticle.title}</h2>
       <p>{currentArticle.body}</p>
-      <p>This article has a popularity of {currentArticle.votes} </p>
+      <p>
+        This article has a popularity of {currentArticle.votes + localVote}{" "}
+      </p>
       <p>Did you enjoy this content?</p>
-      <button>Up</button>
-      <button>Down</button>
+      <button
+        onClick={() => {
+          handleVotes(1);
+        }}
+      >
+        Yes
+      </button>
+      <button
+        onClick={() => {
+          handleVotes(-1);
+        }}
+      >
+        No
+      </button>
       <button>post a comment</button>
 
       <section>
