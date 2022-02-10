@@ -37,22 +37,29 @@ const IndividualArticle = () => {
       <p>
         This article has a popularity of {currentArticle.votes + localVote}{" "}
       </p>
-      <p>Did you enjoy this content?</p>
-      <button
-        onClick={() => {
-          handleVotes(1);
-        }}
-      >
-        Yes
-      </button>
-      <button
-        onClick={() => {
-          handleVotes(-1);
-        }}
-      >
-        No
-      </button>
-      {loggedInUser ? <button>post a comment</button> : null}
+
+      {!loggedInUser.username ? (
+        <p>Please log in to vote or comment</p>
+      ) : (
+        <>
+          <p>Did you enjoy this content, {loggedInUser.username}?</p>
+          <button
+            onClick={() => {
+              handleVotes(1);
+            }}
+          >
+            Yes
+          </button>
+          <button
+            onClick={() => {
+              handleVotes(-1);
+            }}
+          >
+            No
+          </button>
+          <button>Leave a comment</button>
+        </>
+      )}
 
       <section>
         <ul>

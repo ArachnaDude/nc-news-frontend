@@ -21,9 +21,15 @@ const Comment = ({ comment }) => {
       </p>
       <p>{comment.body}</p>
       <p>{comment.votes + localVote} votes</p>
-      {loggedInUser.username === comment.author ? null : (
+
+      {!loggedInUser.username ? null : loggedInUser.username ===
+        comment.author ? null : (
         <button onClick={handleClick}>upvote this comment</button>
       )}
+
+      {/* {loggedInUser.username === comment.author ? null : (
+        <button onClick={handleClick}>upvote this comment</button>
+      )} */}
 
       {loggedInUser.username === comment.author ? (
         <button>delete comment</button>

@@ -9,12 +9,7 @@ import User from "./components/User";
 import { UserContext } from "./contexts/user";
 
 function App() {
-  const [loggedInUser, setLoggedInUser] = useState({
-    username: "jessjelly",
-    name: "Jess Jelly",
-    avatar_url:
-      "https://s-media-cache-ak0.pinimg.com/564x/39/62/ec/3962eca164e60cf46f979c1f57d4078b.jpg",
-  });
+  const [loggedInUser, setLoggedInUser] = useState({});
   return (
     <BrowserRouter>
       <UserContext.Provider value={{ loggedInUser, setLoggedInUser }}>
