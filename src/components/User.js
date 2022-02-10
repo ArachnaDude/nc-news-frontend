@@ -1,5 +1,10 @@
 const User = () => {
-  return <p>A user</p>;
+  return (
+    <>
+      <p>list of articles by user</p>
+      <p>list of comments by user</p>
+    </>
+  );
 };
 
 export default User;

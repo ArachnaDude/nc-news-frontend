@@ -1,12 +1,15 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { UserContext } from "../contexts/user";
 
 const Nav = () => {
+  const userValues = useContext(UserContext);
+  console.log(userValues);
   return (
     <nav>
-      Search by topic: <Link to="/articles/football">Football</Link> |{" "}
-      <Link to="/articles/cooking">Cooking</Link> |{" "}
-      <Link to="/articles/coding">Coding</Link>
+      Topics: <Link to="/articles/topics/football">Football</Link> |{" "}
+      <Link to="/articles/topics/cooking">Cooking</Link> |{" "}
+      <Link to="/articles/topics/coding">Coding</Link>
     </nav>
   );
 };

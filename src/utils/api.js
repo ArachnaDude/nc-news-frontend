@@ -37,3 +37,10 @@ export const patchCommentVotes = (comment_id, votes) => {
       return result.data.comment;
     });
 };
+
+export const getUserProfile = (username) => {
+  return newsAPI.get(`/users/${username}`).then((result) => {
+    console.log(result.data);
+    return result.data;
+  });
+};

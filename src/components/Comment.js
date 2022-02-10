@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { patchCommentVotes } from "../utils/api";
+import { UserContext } from "../contexts/user";
 
 const Comment = ({ comment }) => {
+  const { loggedInUser } = useContext(UserContext);
+
   const [localVote, setLocalVote] = useState(0);
   const handleClick = () => {
     console.log("click");
@@ -18,7 +21,13 @@ const Comment = ({ comment }) => {
       </p>
       <p>{comment.body}</p>
       <p>{comment.votes + localVote} votes</p>
-      <button onClick={handleClick}>upvote this comment</button>
+      {loggedInUser.username === comment.author ? null : (
+        <button onClick={handleClick}>upvote this comment</button>
+      )}
+
+      {loggedInUser.username === comment.author ? (
+        <button>delete comment</button>
+      ) : null}
     </li>
   );
 };

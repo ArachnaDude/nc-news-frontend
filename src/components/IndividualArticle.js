@@ -1,10 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { getSingleArticle, getComments, patchArticleVotes } from "../utils/api";
 import Expandable from "./Expandable";
 import Comment from "./Comment";
+import { UserContext } from "../contexts/user";
 
 const IndividualArticle = () => {
+  const { loggedInUser } = useContext(UserContext);
+  console.log(loggedInUser, "INDIVIDUAL ARTICLE LOGGED IN USER");
+
   const { article_id } = useParams();
   const [currentArticle, setCurrentArticle] = useState({});
   const [comments, setComments] = useState([]);
@@ -48,7 +52,7 @@ const IndividualArticle = () => {
       >
         No
       </button>
-      <button>post a comment</button>
+      {loggedInUser ? <button>post a comment</button> : null}
 
       <section>
         <ul>
