@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { UserContext } from "../contexts/user";
 import { postComment } from "../utils/api";
 
-const CommentForm = () => {
+const CommentForm = ({ setComments }) => {
   const { article_id } = useParams();
 
   const [input, setInput] = useState("");
@@ -16,10 +16,13 @@ const CommentForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const validComment = /\S+./.test(input);
+    const commentObj = { username: loggedInUser.username, body: input };
 
     if (validComment) {
-      postComment(article_id, loggedInUser.username, input).then((res) => {
-        console.log(res);
+      postComment(article_id, commentObj).then((res) => {
+        setComments((currentComments) => {
+          return [res, ...currentComments];
+        });
       });
     }
     setInput("");

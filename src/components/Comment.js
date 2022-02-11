@@ -4,8 +4,7 @@ import { UserContext } from "../contexts/user";
 import { Link } from "react-router-dom";
 import { deleteComment } from "../utils/api";
 
-const Comment = (props) => {
-  const { comment, comments, setComments } = props;
+const Comment = ({ comment, comments, setComments }) => {
   const { loggedInUser } = useContext(UserContext);
 
   const [localVote, setLocalVote] = useState(0);

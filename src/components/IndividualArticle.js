@@ -66,7 +66,7 @@ const IndividualArticle = () => {
               No
             </button>
             <ExpandableCommentButton>
-              <CommentForm />
+              <CommentForm setComments={setComments} />
             </ExpandableCommentButton>
           </>
         )}

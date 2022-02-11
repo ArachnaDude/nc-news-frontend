@@ -44,11 +44,10 @@ export const getUserProfile = (username) => {
   });
 };
 
-export const postComment = (article_id, username, body) => {
+export const postComment = (article_id, commentObj) => {
   return newsAPI
-    .post(`articles/${article_id}/comments`, { body: body, username: username })
+    .post(`articles/${article_id}/comments`, commentObj)
     .then((result) => {
-      console.log(result.data.comment, "posted comment");
       return result.data.comment;
     });
 };
