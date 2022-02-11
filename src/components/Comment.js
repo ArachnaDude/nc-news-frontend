@@ -1,15 +1,18 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { patchCommentVotes } from "../utils/api";
 import { UserContext } from "../contexts/user";
+import { Link } from "react-router-dom";
+import { deleteComment } from "../utils/api";
 
-const Comment = ({ comment }) => {
+const Comment = (props) => {
+  const { comment, comments, setComments } = props;
   const { loggedInUser } = useContext(UserContext);
 
   const [localVote, setLocalVote] = useState(0);
-  const handleClick = () => {
-    console.log("click");
+
+  const handleVotes = (clickDirection) => {
     setLocalVote((currentValue) => {
-      return currentValue + 1;
+      return currentValue + clickDirection;
     });
     patchCommentVotes(comment.comment_id, 1);
   };
@@ -17,22 +20,42 @@ const Comment = ({ comment }) => {
   return (
     <li key={comment.comment_id}>
       <p>
-        <strong>{comment.author}</strong> at {comment.created_at}
+        <strong>
+          <Link to={`/users/${comment.author}`}>{comment.author}</Link>
+        </strong>{" "}
+        at {comment.created_at}
       </p>
       <p>{comment.body}</p>
       <p>{comment.votes + localVote} votes</p>
 
-      {!loggedInUser.username ? null : loggedInUser.username ===
-        comment.author ? null : (
-        <button onClick={handleClick}>upvote this comment</button>
+      {!loggedInUser.username ||
+      loggedInUser.username === comment.author ? null : (
+        <>
+          <button
+            onClick={() => {
+              handleVotes(1);
+            }}
+          >
+            upvote this comment
+          </button>
+          <button
+            onClick={() => {
+              handleVotes(-1);
+            }}
+          >
+            downvote this comment
+          </button>
+        </>
       )}
 
-      {/* {loggedInUser.username === comment.author ? null : (
-        <button onClick={handleClick}>upvote this comment</button>
-      )} */}
-
       {loggedInUser.username === comment.author ? (
-        <button>delete comment</button>
+        <button
+          onClick={() => {
+            deleteComment(comment.comment_id);
+          }}
+        >
+          delete comment
+        </button>
       ) : null}
     </li>
   );

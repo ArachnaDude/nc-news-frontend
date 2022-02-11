@@ -1,26 +1,30 @@
 import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { getSingleArticle, getComments, patchArticleVotes } from "../utils/api";
-import Expandable from "./Expandable";
 import Comment from "./Comment";
 import { UserContext } from "../contexts/user";
+import ExpandableCommentButton from "./ExpandableCommentButton";
+import CommentForm from "./CommentForm";
 
 const IndividualArticle = () => {
   const { loggedInUser } = useContext(UserContext);
-  console.log(loggedInUser, "INDIVIDUAL ARTICLE LOGGED IN USER");
 
   const { article_id } = useParams();
   const [currentArticle, setCurrentArticle] = useState({});
   const [comments, setComments] = useState([]);
   const [localVote, setLocalVote] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    setIsLoading(true);
     getSingleArticle(article_id).then((singleArticle) => {
       setCurrentArticle(singleArticle);
     });
     getComments(article_id).then((comments) => {
       setComments(comments);
     });
+
+    setIsLoading(false);
   }, [article_id]);
 
   const handleVotes = (clickDirection) => {
@@ -30,7 +34,9 @@ const IndividualArticle = () => {
     patchArticleVotes(article_id, clickDirection);
   };
 
-  return (
+  return isLoading ? (
+    <p>Loading article {console.log("loading article")}</p>
+  ) : (
     <>
       <h2>{currentArticle.title}</h2>
       <p>{currentArticle.body}</p>
@@ -57,14 +63,23 @@ const IndividualArticle = () => {
           >
             No
           </button>
-          <button>Leave a comment</button>
+          <ExpandableCommentButton>
+            <CommentForm />
+          </ExpandableCommentButton>
         </>
       )}
 
       <section>
         <ul>
           {comments.map((comment) => {
-            return <Comment key={comment.comment_id} comment={comment} />;
+            return (
+              <Comment
+                key={comment.comment_id}
+                comment={comment}
+                comments={comments}
+                setComments={setComments}
+              />
+            );
           })}
         </ul>
       </section>

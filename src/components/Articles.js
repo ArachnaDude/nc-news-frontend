@@ -4,16 +4,21 @@ import { getArticles } from "../utils/api";
 
 const Articles = () => {
   const [articleList, setArticleList] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const { topic } = useParams();
 
   useEffect(() => {
+    setIsLoading(true);
     getArticles(topic).then((articlesFromApi) => {
       setArticleList(articlesFromApi);
+      setIsLoading(false);
     });
   }, [topic]);
 
-  return (
+  return isLoading ? (
+    <p>Be with you in a second!{console.log("loading your content")}</p>
+  ) : (
     <>
       <ul>
         {articleList.map((article) => {
@@ -24,8 +29,11 @@ const Articles = () => {
               </Link>
               <p>{article.votes} votes</p>
               <p>
-                Posted by <strong>{article.author}</strong> at{" "}
-                {article.created_at}
+                Posted by{" "}
+                <strong>
+                  <Link to={`/users/${article.author}`}>{article.author}</Link>
+                </strong>{" "}
+                at {article.created_at}
               </p>
               <p>{article.comment_count} comments</p>
             </li>

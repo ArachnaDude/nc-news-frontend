@@ -1,8 +1,26 @@
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { getUserProfile } from "../utils/api";
+
 const User = () => {
+  const { username } = useParams();
+  const [currentUser, setCurrentUser] = useState({});
+  useEffect(() => {
+    getUserProfile(username).then((userDataFromApi) => {
+      setCurrentUser(userDataFromApi);
+    });
+  }, [username]);
   return (
     <>
-      <p>list of articles by user</p>
-      <p>list of comments by user</p>
+      <img
+        src={currentUser.avatar_url}
+        alt={`${currentUser.username}'s avatar`}
+      />
+      <h2>{currentUser.username}'s Profile</h2>
+      <p>name: {currentUser.name}</p>
+
+      <p>list of articles by {currentUser.username} </p>
+      <p>list of comments by {currentUser.username}</p>
     </>
   );
 };

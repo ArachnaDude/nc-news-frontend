@@ -40,7 +40,22 @@ export const patchCommentVotes = (comment_id, votes) => {
 
 export const getUserProfile = (username) => {
   return newsAPI.get(`/users/${username}`).then((result) => {
-    console.log(result.data);
-    return result.data;
+    return result.data.user;
+  });
+};
+
+export const postComment = (article_id, username, body) => {
+  return newsAPI
+    .post(`articles/${article_id}/comments`, { body: body, username: username })
+    .then((result) => {
+      console.log(result.data.comment, "posted comment");
+      return result.data.comment;
+    });
+};
+
+export const deleteComment = (comment_id) => {
+  return newsAPI.delete(`comments/${comment_id}`).then((result) => {
+    console.log("deleting comment");
+    return result;
   });
 };
