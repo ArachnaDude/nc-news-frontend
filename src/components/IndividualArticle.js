@@ -23,7 +23,6 @@ const IndividualArticle = () => {
     getComments(article_id).then((comments) => {
       setComments(comments);
     });
-
     setIsLoading(false);
   }, [article_id]);
 
@@ -35,42 +34,46 @@ const IndividualArticle = () => {
   };
 
   return isLoading ? (
-    <p>Loading article {console.log("loading article")}</p>
+    <p className="loadingMessage">Loading article</p>
   ) : (
     <>
-      <h2>{currentArticle.title}</h2>
-      <p>{currentArticle.body}</p>
-      <p>
-        This article has a popularity of {currentArticle.votes + localVote}{" "}
-      </p>
+      <section className="individualArticle">
+        <h2>{currentArticle.title}</h2>
+        <p>{currentArticle.body}</p>
+        <p>
+          This article has a popularity of {currentArticle.votes + localVote}{" "}
+        </p>
 
-      {!loggedInUser.username ? (
-        <p>Please log in to vote or comment</p>
-      ) : (
-        <>
-          <p>Did you enjoy this content, {loggedInUser.username}?</p>
-          <button
-            onClick={() => {
-              handleVotes(1);
-            }}
-          >
-            Yes
-          </button>
-          <button
-            onClick={() => {
-              handleVotes(-1);
-            }}
-          >
-            No
-          </button>
-          <ExpandableCommentButton>
-            <CommentForm />
-          </ExpandableCommentButton>
-        </>
-      )}
+        {!loggedInUser.username ? (
+          <p className="individualArticle__warning">
+            Please log in to vote or comment
+          </p>
+        ) : (
+          <>
+            <p>Did you enjoy this content, {loggedInUser.username}?</p>
+            <button
+              onClick={() => {
+                handleVotes(1);
+              }}
+            >
+              Yes
+            </button>
+            <button
+              onClick={() => {
+                handleVotes(-1);
+              }}
+            >
+              No
+            </button>
+            <ExpandableCommentButton>
+              <CommentForm />
+            </ExpandableCommentButton>
+          </>
+        )}
+      </section>
 
-      <section>
-        <ul>
+      <section className="commentSection">
+        <ul className="commentSection__list">
           {comments.map((comment) => {
             return (
               <Comment

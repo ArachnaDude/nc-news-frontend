@@ -17,17 +17,19 @@ const Articles = () => {
   }, [topic]);
 
   return isLoading ? (
-    <p>Be with you in a second!{console.log("loading your content")}</p>
+    <p className="loadingMessage">
+      Be with you in a second!{console.log("loading your content")}
+    </p>
   ) : (
     <>
-      <ul>
+      <ul className="articleList">
         {articleList.map((article) => {
           return (
-            <li key={article.article_id}>
+            <li className="articleCard" key={article.article_id}>
               <Link to={`/articles/${article.article_id}`}>
-                <h4>{article.title}</h4>
+                <h4 className="articleList__header">{article.title}</h4>
               </Link>
-              <p>{article.votes} votes</p>
+
               <p>
                 Posted by{" "}
                 <strong>
@@ -35,7 +37,9 @@ const Articles = () => {
                 </strong>{" "}
                 at {article.created_at}
               </p>
-              <p>{article.comment_count} comments</p>
+              <p>
+                comments: {article.comment_count} | popularity: {article.votes}
+              </p>
             </li>
           );
         })}

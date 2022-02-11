@@ -18,7 +18,7 @@ const Comment = (props) => {
   };
 
   return (
-    <li key={comment.comment_id}>
+    <li className="commentCard" key={comment.comment_id}>
       <p>
         <strong>
           <Link to={`/users/${comment.author}`}>{comment.author}</Link>

@@ -17,7 +17,6 @@ const CommentForm = () => {
     event.preventDefault();
     const validComment = /\S+./.test(input);
 
-    console.log(input, loggedInUser.username, validComment);
     if (validComment) {
       postComment(article_id, loggedInUser.username, input).then((res) => {
         console.log(res);
@@ -26,11 +25,12 @@ const CommentForm = () => {
     setInput("");
   };
 
-  console.log(input, "input");
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="commentForm" onSubmit={handleSubmit}>
       <label>
+        <p className="commentForm__description">Leave a comment</p>
         <input
+          className="commentForm__textbox"
           value={input}
           placeholder="Share your insight, genius"
           onChange={handleChange}

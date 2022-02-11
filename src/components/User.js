@@ -13,11 +13,14 @@ const User = () => {
   return (
     <>
       <img
+        className="userProfile__picture"
         src={currentUser.avatar_url}
         alt={`${currentUser.username}'s avatar`}
       />
-      <h2>{currentUser.username}'s Profile</h2>
-      <p>name: {currentUser.name}</p>
+      <h2 className="userProfile__username">
+        {currentUser.username}'s Profile
+      </h2>
+      <p className="userProfile__name">name: {currentUser.name}</p>
 
       <p>list of articles by {currentUser.username} </p>
       <p>list of comments by {currentUser.username}</p>

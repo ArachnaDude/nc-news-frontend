@@ -1,38 +1,97 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  background-color: rgb(66, 66, 66);
+  color: aliceblue;
+  font-family: Poppins;
+}
+
 .App {
+  background-color: rgb(66, 66, 66);
+  color: rgb(248, 248, 248);
+}
+
+.headerDiv {
+  text-align: center;
+  padding: 20px;
+}
+.headerDiv a {
+  text-decoration: none;
+}
+
+.headerDiv__h1 {
+  text-shadow: 0.3rem 0.3rem 0.5rem rgb(255, 75, 216);
+  font-size: 5rem;
+  margin-block: auto;
+}
+
+.headerDiv__h3 {
+  margin-block: auto;
+}
+
+a {
+  color: rgb(248, 248, 248);
+}
+
+button {
+  padding: 0.5rem;
+  margin: 0.5rem;
+  border-radius: 0 0.5rem 0.5rem 0.5rem;
+  background-color: rgb(83, 83, 83);
+  border-color: rgb(255, 75, 216);
+}
+
+.navBar {
+  display: flex;
+  justify-content: space-evenly;
+  margin: auto;
+  width: 20rem;
+}
+
+.loadingMessage {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.commentSection__list {
+  padding: 0;
+}
+
+.articleList {
+  padding: 0;
+  width: 80vw;
+  margin-left: 1rem;
+}
+
+.articleList__header {
+  font-size: 1.5rem;
+  margin: 1rem 0 1rem 0;
+}
+
+.articleCard {
+  border: solid rgb(255, 75, 216) 2px;
+  list-style-type: none;
+  margin: 20px 5px 20px 5px;
+  padding: 0.5rem;
+  border-radius: 0 30px 30px 30px;
+}
+
+.articleCard a {
+  text-decoration: none;
+}
+
+.individualArticle {
+  margin: 1rem;
+}
+
+.individualArticle__warning {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.commentCard {
+  border: solid rgb(255, 75, 216) 2px;
+  list-style-type: none;
+  margin: 10px;
+  padding: 0.5rem;
+  border-radius: 0 30px 30px 30px;
 }
