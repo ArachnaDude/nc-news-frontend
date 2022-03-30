@@ -5,6 +5,7 @@ import Articles from "./components/Articles";
 import Header from "./components/Header";
 import Nav from "./components/Nav";
 import IndividualArticle from "./components/IndividualArticle";
+import Login from "./components/Login";
 import User from "./components/User";
 import { UserContext } from "./contexts/user";
 
@@ -17,7 +18,8 @@ function App() {
           <Header />
           <Nav />
           <Routes>
-            <Route path="/" element={<Articles />} />
+            <Route path="/" element={<Login />} />
+            {/* <Route path="/" element={<Articles />} /> */}
             <Route path="/articles/topics/:topic" element={<Articles />} />
             <Route
               path="/articles/:article_id"

@@ -9,6 +9,8 @@ const Articles = () => {
 
   const { topic } = useParams();
 
+  console.log(topic, "topic console log");
+
   useEffect(() => {
     setIsLoading(true);
     getArticles(topic).then((articlesFromApi) => {
