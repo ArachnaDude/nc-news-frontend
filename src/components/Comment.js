@@ -9,6 +9,8 @@ const Comment = ({ comment, comments, setComments }) => {
 
   const [localVote, setLocalVote] = useState(0);
 
+  // patchCommentVotes needs fixing - patch request only upvotes
+
   const handleVotes = (clickDirection) => {
     setLocalVote((currentValue) => {
       return currentValue + clickDirection;
