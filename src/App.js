@@ -18,9 +18,10 @@ function App() {
           <Header />
           <Nav />
           <Routes>
-            <Route path="/" element={<Login />} />
+            <Route path="/" element={<Articles />} />
             <Route path="/articles" element={<Articles />} />
-            <Route path="/articles/topics/:topic" element={<Articles />} />
+            <Route path="/login" element={<Login />} />
+            {/* <Route path="/articles/topics/:topic" element={<Articles />} /> */}
             <Route
               path="/articles/:article_id"
               element={<IndividualArticle />}
