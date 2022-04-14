@@ -7,8 +7,7 @@ const Articles = () => {
   const [articleList, setArticleList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  // const { topic } = useParams();
-
+  // searchParams is a hook to read query strings
   const [searchParams] = useSearchParams();
 
   useEffect(() => {
