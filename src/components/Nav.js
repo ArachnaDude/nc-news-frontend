@@ -47,13 +47,13 @@ const Nav = () => {
         <option value="coding">Coding</option>
         <option value="football">Football</option>
         <option value="cooking">Cooking</option>
-      </select>
+      </select>{" "}
       Order by:
       <select value={sortBy} onChange={handleChangeOrder}>
         <option value="created_at">Date created</option>
         <option value="votes">Votes</option>
         <option value="comment_count">Comment count</option>
-      </select>
+      </select>{" "}
       Directon:
       <select value={directon} onChange={handleChangeDirection}>
         <option value="desc">Descending</option>

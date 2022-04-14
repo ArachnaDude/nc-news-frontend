@@ -5,7 +5,8 @@ const newsAPI = axios.create({
 });
 
 export const getArticles = (topic) => {
-  return newsAPI.get("/articles", { params: { topic } }).then((result) => {
+  // removed { params: { topic } } as second argument from get request
+  return newsAPI.get("/articles").then((result) => {
     return result.data.articles;
   });
 };
