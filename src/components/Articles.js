@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useSearchParams } from "react-router-dom";
 import { getArticles } from "../utils/api";
 import ArticleCard from "./ArticleCard";
 
@@ -7,17 +7,17 @@ const Articles = () => {
   const [articleList, setArticleList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const { topic } = useParams();
+  // const { topic } = useParams();
 
-  console.log(topic, "topic console log");
+  const [searchParams] = useSearchParams();
 
   useEffect(() => {
     setIsLoading(true);
-    getArticles(topic).then((articlesFromApi) => {
+    getArticles(searchParams.get("topic")).then((articlesFromApi) => {
       setArticleList(articlesFromApi);
       setIsLoading(false);
     });
-  }, [topic]);
+  }, [searchParams]);
 
   return isLoading ? (
     <p className="loadingMessage">

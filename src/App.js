@@ -19,6 +19,7 @@ function App() {
           <Nav />
           <Routes>
             <Route path="/" element={<Login />} />
+            <Route path="/articles" element={<Articles />} />
             <Route path="/articles/topics/:topic" element={<Articles />} />
             <Route
               path="/articles/:article_id"
