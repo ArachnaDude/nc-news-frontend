@@ -8,6 +8,7 @@ import IndividualArticle from "./components/IndividualArticle";
 import Login from "./components/Login";
 import User from "./components/User";
 import { UserContext } from "./contexts/user";
+import TopicList from "./components/TopicList";
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({});
@@ -20,6 +21,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Articles />} />
             <Route path="/articles" element={<Articles />} />
+            <Route path="/topics" element={<TopicList />} />
             <Route path="/login" element={<Login />} />
             {/* <Route path="/articles/topics/:topic" element={<Articles />} /> */}
             <Route
