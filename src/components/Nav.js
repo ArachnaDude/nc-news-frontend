@@ -6,20 +6,19 @@ const Nav = () => {
   // navigate is an invoked instance of useNavigate.
   const navigate = useNavigate();
 
-  const [filterBy, setFilterBy] = useState("all");
+  // changed state from "all" to empty string
+  const [filterBy, setFilterBy] = useState("");
 
-  //change sortBy default state
-  const [sortBy, setSortBy] = useState("created_at");
+  const [sortBy, setSortBy] = useState("");
 
-  //change direction default state
-  const [directon, setDirection] = useState("desc");
+  const [directon, setDirection] = useState("");
 
   // setFilter updates the filter state to what we selected from the dropdown
   const handleChange = (event) => {
     setFilterBy(event.target.value);
     // "all" isnt a valid topic, so selecting it uses the Articles
-    // component WITHOUT a query - see App.js route path Articles
-    // if a topic query is present, it uses the articles/topic/:topic
+    // component WITHOUT a query - see App.js route path Articles -
+    // if a topic query is present, it uses the articles
     // route instead
     if (event.target.value === "all") {
       navigate("/articles");
@@ -40,22 +39,28 @@ const Nav = () => {
 
   return (
     <nav className="navBar">
-      Select a topic
       {/* select is HTML for a dropdown list */}
       <select value={filterBy} onChange={handleChange}>
+        <option value="" disabled defaultValue>
+          Select a topic
+        </option>
         <option value="all">All</option>
         <option value="coding">Coding</option>
         <option value="football">Football</option>
         <option value="cooking">Cooking</option>
       </select>{" "}
-      Order by:
       <select value={sortBy} onChange={handleChangeOrder}>
+        <option value="" disabled defaultValue>
+          Sort By
+        </option>
         <option value="created_at">Date created</option>
         <option value="votes">Votes</option>
         <option value="comment_count">Comment count</option>
       </select>{" "}
-      Directon:
       <select value={directon} onChange={handleChangeDirection}>
+        <option value="" disabled defaultValue>
+          Order by
+        </option>
         <option value="desc">Descending</option>
         <option value="asc">Ascending</option>
       </select>
