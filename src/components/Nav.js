@@ -1,6 +1,5 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import App from "../App";
 
 const Nav = () => {
   // navigate is an invoked instance of useNavigate.
@@ -13,16 +12,10 @@ const Nav = () => {
 
   const [direction, setDirection] = useState("");
 
-  // const queryStr = `/articles?topic=${filterBy}`;
-  // if (sortBy) {
-  //   queryStr += `&sort_by=${sortBy}`;
-  // }
-  // if (direction) {
-  //   queryStr += `&order=${direction}`;
-  // }
+  const [searchParams, setSearchParams] = useSearchParams();
 
   // setFilter updates the filter state to what we selected from the dropdown
-  const handleChange = (event) => {
+  const handleChangeTopic = (event) => {
     setFilterBy(event.target.value);
     // "all" isnt a valid topic, so selecting it uses the Articles
     // component WITHOUT a query - see App.js route path Articles -
@@ -35,20 +28,26 @@ const Nav = () => {
     }
   };
 
+  useEffect(() => {
+    if (filterBy) console.log(filterBy);
+    if (sortBy) console.log(sortBy);
+    if (direction) console.log(direction);
+  }, [filterBy, sortBy, direction]);
+
   const handleChangeOrder = (event) => {
     setSortBy(event.target.value);
-    console.log(event.target.value);
+    // console.log(event.target.value);
   };
 
   const handleChangeDirection = (event) => {
     setDirection(event.target.value);
-    console.log(event.target.value);
+    // console.log(event.target.value);
   };
 
   return (
     <nav className="navBar">
       {/* select is HTML for a dropdown list */}
-      <select value={filterBy} onChange={handleChange}>
+      <select value={filterBy} onChange={handleChangeTopic}>
         <option value="" disabled defaultValue>
           Select a topic
         </option>
