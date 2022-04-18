@@ -5,7 +5,9 @@ const TopicCard = ({ topic }) => {
 
   return (
     <li>
-      <h4>{topic.slug}</h4>
+      <h4>
+        <Link to={`/articles?topic=${topic.slug}`}>{topic.slug}</Link>
+      </h4>
       <p>{topic.description}</p>
     </li>
   );

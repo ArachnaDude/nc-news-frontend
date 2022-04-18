@@ -11,14 +11,16 @@ const Articles = () => {
   // as "topic" is the query, we use the .get to extract that from the URL
   const [searchParams] = useSearchParams();
   const topic = searchParams.get("topic");
+  const sortBy = searchParams.get("sort_by");
+  const direction = searchParams.get("order");
 
   useEffect(() => {
-    setIsLoading(true);
-    getArticles(topic).then((articlesFromApi) => {
+    // setIsLoading(true);
+    getArticles(topic, sortBy, direction).then((articlesFromApi) => {
       setArticleList(articlesFromApi);
       setIsLoading(false);
     });
-  }, [topic]);
+  }, [topic, sortBy, direction]);
 
   return isLoading ? (
     <p className="loadingMessage">

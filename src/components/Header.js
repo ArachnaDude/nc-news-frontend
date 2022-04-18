@@ -21,15 +21,18 @@ const Header = () => {
 
       {!loggedInUser.username ? (
         <span className="headerDiv__login">
-          Don't forget to log in!
-          <button
+          Don't forget to{" "}
+          <strong>
+            <Link to="/login">log in!</Link>
+          </strong>
+          {/* <button
             className="headerDiv__button"
             onClick={() => {
               setLoggedInUser(guestUser);
             }}
           >
             Log in
-          </button>
+          </button> */}
         </span>
       ) : (
         <span className="headerDiv__loggedIn">

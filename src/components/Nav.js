@@ -11,7 +11,15 @@ const Nav = () => {
 
   const [sortBy, setSortBy] = useState("");
 
-  const [directon, setDirection] = useState("");
+  const [direction, setDirection] = useState("");
+
+  // const queryStr = `/articles?topic=${filterBy}`;
+  // if (sortBy) {
+  //   queryStr += `&sort_by=${sortBy}`;
+  // }
+  // if (direction) {
+  //   queryStr += `&order=${direction}`;
+  // }
 
   // setFilter updates the filter state to what we selected from the dropdown
   const handleChange = (event) => {
@@ -57,9 +65,9 @@ const Nav = () => {
         <option value="votes">Votes</option>
         <option value="comment_count">Comment count</option>
       </select>{" "}
-      <select value={directon} onChange={handleChangeDirection}>
+      <select value={direction} onChange={handleChangeDirection}>
         <option value="" disabled defaultValue>
-          Order by
+          Direction
         </option>
         <option value="desc">Descending</option>
         <option value="asc">Ascending</option>
