@@ -1,4 +1,5 @@
 import { Link, useParams } from "react-router-dom";
+import moment from "moment";
 
 const ArticleCard = ({ article }) => {
   return (
@@ -12,7 +13,7 @@ const ArticleCard = ({ article }) => {
         <strong>
           <Link to={`/users/${article.author}`}>{article.author}</Link>
         </strong>{" "}
-        at {article.created_at}
+        on {moment(article.created_at).format("MMMM Do, YYYY")}
       </p>
       <p>
         comments: {article.comment_count} | popularity: {article.votes}
