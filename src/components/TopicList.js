@@ -8,7 +8,6 @@ const TopicList = () => {
   const [topicsList, setTopicsList] = useState([]);
 
   useEffect(() => {
-    setIsLoading(true);
     getTopics().then((topicsFromAPI) => {
       setTopicsList(topicsFromAPI);
       setIsLoading(false);
