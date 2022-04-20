@@ -9,6 +9,7 @@ import Login from "./components/Login";
 import User from "./components/User";
 import { UserContext } from "./contexts/user";
 import TopicList from "./components/TopicList";
+import ErrorPage from "./components/ErrorPage";
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({});
@@ -23,12 +24,12 @@ function App() {
             <Route path="/articles" element={<Articles />} />
             <Route path="/topics" element={<TopicList />} />
             <Route path="/login" element={<Login />} />
-            {/* <Route path="/articles/topics/:topic" element={<Articles />} /> */}
             <Route
               path="/articles/:article_id"
               element={<IndividualArticle />}
             />
             <Route path="/users/:username" element={<User />} />
+            <Route path="*" element={<ErrorPage />} />
           </Routes>
         </div>
       </UserContext.Provider>
