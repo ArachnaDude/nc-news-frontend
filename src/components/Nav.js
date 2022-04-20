@@ -12,8 +12,6 @@ const Nav = () => {
 
   const [direction, setDirection] = useState("");
 
-  const [searchParams, setSearchParams] = useSearchParams();
-
   // setFilter updates the filter state to what we selected from the dropdown
   const handleChangeTopic = (event) => {
     setFilterBy(event.target.value);
