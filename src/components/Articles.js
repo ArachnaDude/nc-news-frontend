@@ -8,14 +8,16 @@ const Articles = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   // searchParams is a hook to read query strings
-  // as "topic" is the query, we use the .get to extract that from the URL
+  // as "topic" is the query, we use the .get to extract
+  // what the topic is from the URL.
+  // e.g /articles?topic=football in the URL,
+  // the topic variable = "football"
   const [searchParams] = useSearchParams();
   const topic = searchParams.get("topic");
   const sortBy = searchParams.get("sort_by");
   const direction = searchParams.get("order");
 
   useEffect(() => {
-    // setIsLoading(true);
     getArticles(topic, sortBy, direction).then((articlesFromApi) => {
       setArticleList(articlesFromApi);
       setIsLoading(false);
