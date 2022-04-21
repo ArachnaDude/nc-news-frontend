@@ -5,6 +5,7 @@ import Comment from "./Comment";
 import { UserContext } from "../contexts/user";
 import ExpandableCommentButton from "./ExpandableCommentButton";
 import CommentForm from "./CommentForm";
+import ErrorPage from "./ErrorPage";
 
 const IndividualArticle = () => {
   const { loggedInUser } = useContext(UserContext);
@@ -17,18 +18,28 @@ const IndividualArticle = () => {
 
   const [error, setError] = useState(null);
 
+  // the api call returns the entire object because the catch
+  // block here requires different key/value pairs - we have to set
+  // the article using dot notation here instead of returning it
+  // from the api call
+
   useEffect(() => {
     getSingleArticle(article_id)
       .then((singleArticle) => {
-        setCurrentArticle(singleArticle);
+        console.log(singleArticle.data.article, "singleArticle");
+        setCurrentArticle(singleArticle.data.article);
       })
-      .catch((err) => {
-        setError(err);
-        console.log(error, "IndividualArticle component");
+      .catch(({ response }) => {
+        console.log(response, " article response catchblock");
+        setError({ status: response.status, message: response.data.msg });
       });
-    getComments(article_id).then((comments) => {
-      setComments(comments);
-    });
+    getComments(article_id)
+      .then((comments) => {
+        setComments(comments);
+      })
+      .catch(({ response }) => {
+        console.log(response, "comment response catchBlock");
+      });
 
     setIsLoading(false);
   }, [article_id]);
@@ -41,7 +52,7 @@ const IndividualArticle = () => {
   };
 
   if (error) {
-    return <h4>{console.log("h4 individual article")}</h4>;
+    return <ErrorPage status={error.status} message={error.message} />;
   }
 
   return isLoading ? (

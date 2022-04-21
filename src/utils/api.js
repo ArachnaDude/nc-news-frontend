@@ -4,6 +4,8 @@ const newsAPI = axios.create({
   baseURL: "https://nc-news-full-backend.herokuapp.com/api",
 });
 
+// TO DO destructure result into data and response for catch blocks
+
 export const getArticles = (topic, sort_by, order) => {
   return newsAPI
     .get("/articles", { params: { topic, sort_by, order } })
@@ -18,11 +20,9 @@ export const getTopics = () => {
   });
 };
 
+// this call returns the entire object to be able to utilise error handling
 export const getSingleArticle = (article_id) => {
-  return newsAPI.get(`/articles/${article_id}`).then((result) => {
-    console.log(result);
-    return result.data.article;
-  });
+  return newsAPI.get(`/articles/${article_id}`);
 };
 
 export const getComments = (article_id) => {
