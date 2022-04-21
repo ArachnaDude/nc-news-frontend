@@ -4,8 +4,18 @@ import { getArticles } from "../utils/api";
 import ArticleCard from "./ArticleCard";
 
 const Articles = () => {
-  const [articleList, setArticleList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [articleList, setArticleList] = useState([]);
+  const [sortBy, setSortBy] = useState("created_at");
+  const [direction, setDirection] = useState("desc");
+
+  const handleChangeSort = (event) => {
+    setSortBy(event.target.value);
+  };
+
+  const handleChangeOrder = (event) => {
+    setDirection(event.target.value);
+  };
 
   // searchParams is a hook to read query strings
   // as "topic" is the query, we use the .get to extract
@@ -14,8 +24,6 @@ const Articles = () => {
   // the topic variable = "football"
   const [searchParams] = useSearchParams();
   const topic = searchParams.get("topic");
-  const sortBy = searchParams.get("sort_by");
-  const direction = searchParams.get("order");
 
   useEffect(() => {
     getArticles(topic, sortBy, direction).then((articlesFromApi) => {
@@ -30,6 +38,22 @@ const Articles = () => {
     </p>
   ) : (
     <>
+      <label>
+        Sort By
+        <select value={sortBy} onChange={handleChangeSort}>
+          <option value="created_at">Date Created</option>
+          <option value="comment_count">Comment Count</option>
+          <option value="votes">Votes</option>
+        </select>
+      </label>
+      <label>
+        Change Order
+        <select value={direction} onChange={handleChangeOrder}>
+          <option value="desc">Descending</option>
+          <option value="asc">Ascending</option>
+        </select>
+      </label>
+
       <ul className="articleList">
         {articleList.map((article) => {
           return <ArticleCard key={article.article_id} article={article} />;

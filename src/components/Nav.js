@@ -1,4 +1,4 @@
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 const Nav = () => {
@@ -44,33 +44,37 @@ const Nav = () => {
 
   return (
     <nav className="navBar">
-      {/* select is HTML for a dropdown list */}
-      <select value={filterBy} onChange={handleChangeTopic}>
-        <option value="" disabled defaultValue>
-          Select a topic
-        </option>
-        <option value="all">All</option>
-        <option value="coding">Coding</option>
-        <option value="football">Football</option>
-        <option value="cooking">Cooking</option>
-      </select>{" "}
-      <select value={sortBy} onChange={handleChangeOrder}>
-        <option value="" disabled defaultValue>
-          Sort By
-        </option>
-        <option value="created_at">Date created</option>
-        <option value="votes">Votes</option>
-        <option value="comment_count">Comment count</option>
-      </select>{" "}
-      <select value={direction} onChange={handleChangeDirection}>
-        <option value="" disabled defaultValue>
-          Direction
-        </option>
-        <option value="desc">Descending</option>
-        <option value="asc">Ascending</option>
-      </select>
+      <Link to={"/"}>Home</Link>
+      <Link to={"/topics"}>Topics</Link>
     </nav>
   );
+  // <nav className="navBar">
+  //   {/* select is HTML for a dropdown list */}
+  //   <select value={filterBy} onChange={handleChangeTopic}>
+  //     <option value="" disabled defaultValue>
+  //       Select a topic
+  //     </option>
+  //     <option value="all">All</option>
+  //     <option value="coding">Coding</option>
+  //     <option value="football">Football</option>
+  //     <option value="cooking">Cooking</option>
+  //   </select>{" "}
+  //   <select value={sortBy} onChange={handleChangeOrder}>
+  //     <option value="" disabled defaultValue>
+  //       Sort By
+  //     </option>
+  //     <option value="created_at">Date created</option>
+  //     <option value="votes">Votes</option>
+  //     <option value="comment_count">Comment count</option>
+  //   </select>{" "}
+  //   <select value={direction} onChange={handleChangeDirection}>
+  //     <option value="" disabled defaultValue>
+  //       Direction
+  //     </option>
+  //     <option value="desc">Descending</option>
+  //     <option value="asc">Ascending</option>
+  //   </select>
+  // </nav>
 };
 
 export default Nav;
