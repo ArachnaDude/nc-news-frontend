@@ -20,6 +20,7 @@ export const getTopics = () => {
 
 export const getSingleArticle = (article_id) => {
   return newsAPI.get(`/articles/${article_id}`).then((result) => {
+    console.log(result);
     return result.data.article;
   });
 };

@@ -15,14 +15,21 @@ const IndividualArticle = () => {
   const [localVote, setLocalVote] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
+  const [error, setError] = useState(null);
+
   useEffect(() => {
-    setIsLoading(true);
-    getSingleArticle(article_id).then((singleArticle) => {
-      setCurrentArticle(singleArticle);
-    });
+    getSingleArticle(article_id)
+      .then((singleArticle) => {
+        setCurrentArticle(singleArticle);
+      })
+      .catch((err) => {
+        setError(err);
+        console.log(error, "IndividualArticle component");
+      });
     getComments(article_id).then((comments) => {
       setComments(comments);
     });
+
     setIsLoading(false);
   }, [article_id]);
 
@@ -32,6 +39,10 @@ const IndividualArticle = () => {
     });
     patchArticleVotes(article_id, clickDirection);
   };
+
+  if (error) {
+    return <h4>{console.log("h4 individual article")}</h4>;
+  }
 
   return isLoading ? (
     <p className="loadingMessage">Loading article</p>

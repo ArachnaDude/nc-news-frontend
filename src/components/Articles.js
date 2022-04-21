@@ -9,6 +9,9 @@ const Articles = () => {
   const [sortBy, setSortBy] = useState("created_at");
   const [direction, setDirection] = useState("desc");
 
+  //error handling
+  const [error, setError] = useState(null);
+
   const handleChangeSort = (event) => {
     setSortBy(event.target.value);
   };
@@ -26,10 +29,14 @@ const Articles = () => {
   const topic = searchParams.get("topic");
 
   useEffect(() => {
-    getArticles(topic, sortBy, direction).then((articlesFromApi) => {
-      setArticleList(articlesFromApi);
-      setIsLoading(false);
-    });
+    getArticles(topic, sortBy, direction)
+      .then((articlesFromApi) => {
+        setArticleList(articlesFromApi);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, [topic, sortBy, direction]);
 
   return isLoading ? (
