@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 
 const TopicCard = ({ topic }) => {
-  console.log(topic);
-
   return (
     <li>
       <h4>
