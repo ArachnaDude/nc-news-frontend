@@ -44,6 +44,7 @@ export const patchCommentVotes = (comment_id, votes) => {
     });
 };
 
+// this call returns the entire object in order to utilise error handling
 export const getUserProfile = (username) => {
   return newsAPI.get(`/users/${username}`).then((result) => {
     return result.data.user;
