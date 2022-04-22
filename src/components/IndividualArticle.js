@@ -25,9 +25,9 @@ const IndividualArticle = () => {
 
   useEffect(() => {
     getSingleArticle(article_id)
-      .then((singleArticle) => {
-        console.log(singleArticle.data.article, "singleArticle");
-        setCurrentArticle(singleArticle.data.article);
+      .then(({ data }) => {
+        console.log(data.article, "singleArticle");
+        setCurrentArticle(data.article);
       })
       .catch(({ response }) => {
         console.log(response, " article response catchblock");
@@ -40,7 +40,6 @@ const IndividualArticle = () => {
       .catch(({ response }) => {
         console.log(response, "comment response catchBlock");
       });
-
     setIsLoading(false);
   }, [article_id]);
 
