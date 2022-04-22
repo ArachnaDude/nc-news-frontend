@@ -16,7 +16,7 @@ const Comment = ({ comment, comments, setComments }) => {
     setLocalVote((currentValue) => {
       return currentValue + clickDirection;
     });
-    patchCommentVotes(comment.comment_id, 1);
+    patchCommentVotes(comment.comment_id, clickDirection);
   };
 
   return (
