@@ -6,12 +6,9 @@ const newsAPI = axios.create({
 
 // TO DO destructure result into data and response for catch blocks
 
+// this call returns the entire object in order to utilise error handling
 export const getArticles = (topic, sort_by, order) => {
-  return newsAPI
-    .get("/articles", { params: { topic, sort_by, order } })
-    .then((result) => {
-      return result.data.articles;
-    });
+  return newsAPI.get("/articles", { params: { topic, sort_by, order } });
 };
 
 export const getTopics = () => {
@@ -20,7 +17,7 @@ export const getTopics = () => {
   });
 };
 
-// this call returns the entire object to be able to utilise error handling
+// this call returns the entire object in order to utilise error handling
 export const getSingleArticle = (article_id) => {
   return newsAPI.get(`/articles/${article_id}`);
 };

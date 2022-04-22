@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { getArticles } from "../utils/api";
 import ArticleCard from "./ArticleCard";
+import ErrorPage from "./ErrorPage";
 
 const Articles = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -30,14 +31,20 @@ const Articles = () => {
 
   useEffect(() => {
     getArticles(topic, sortBy, direction)
-      .then((articlesFromApi) => {
-        setArticleList(articlesFromApi);
-        setIsLoading(false);
+      .then(({ data }) => {
+        console.log(data, "proper articles");
+        setArticleList(data.articles);
       })
-      .catch((err) => {
-        console.log(err);
+      .catch(({ response }) => {
+        console.log(response, "catch block");
+        setError({ status: response.status, message: response.data.msg });
       });
+    setIsLoading(false);
   }, [topic, sortBy, direction]);
+
+  if (error) {
+    return <ErrorPage status={error.status} message={error.message} />;
+  }
 
   return isLoading ? (
     <p className="loadingMessage">
