@@ -32,11 +32,9 @@ const Articles = () => {
   useEffect(() => {
     getArticles(topic, sortBy, direction)
       .then(({ data }) => {
-        console.log(data, "proper articles");
         setArticleList(data.articles);
       })
       .catch(({ response }) => {
-        console.log(response, "catch block");
         setError({ status: response.status, message: response.data.msg });
       });
     setIsLoading(false);
@@ -67,7 +65,7 @@ const Articles = () => {
           <option value="asc">Ascending</option>
         </select>
       </label>
-
+      <h4>Viewing all {topic} articles</h4>
       <ul className="articleList">
         {articleList.map((article) => {
           return <ArticleCard key={article.article_id} article={article} />;
