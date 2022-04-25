@@ -14,6 +14,8 @@ const Login = () => {
   };
   return (
     <>
+      <p>Log in to enable voting and commenting</p>
+
       <form onSubmit={handleSubmit}>
         <label>
           Username:{" "}

@@ -26,11 +26,9 @@ const IndividualArticle = () => {
   useEffect(() => {
     getSingleArticle(article_id)
       .then(({ data }) => {
-        console.log(data.article, "singleArticle");
         setCurrentArticle(data.article);
       })
       .catch(({ response }) => {
-        console.log(response, " article response catchblock");
         setError({ status: response.status, message: response.data.msg });
       });
     getComments(article_id)
