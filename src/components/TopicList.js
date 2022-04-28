@@ -15,7 +15,9 @@ const TopicList = () => {
   }, []);
 
   return isLoading ? (
-    <p className="loadingMessage">Loading topics{console.log("loading")}</p>
+    <p className="loadingMessage">
+      Loading topics{console.log("loading topics")}
+    </p>
   ) : (
     <ul>
       {topicsList.map((topic) => {

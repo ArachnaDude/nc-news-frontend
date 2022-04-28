@@ -4,6 +4,12 @@ const newsAPI = axios.create({
   baseURL: "https://nc-news-full-backend.herokuapp.com/api",
 });
 
+// my backend url: https://matts-nc-news-backend.herokuapp.com/api
+
+// example url: https://nc-news-full-backend.herokuapp.com/api
+
+// TODO - once backend is fixed & redeployed, switch over to my backend
+
 // TO DO destructure result into data and response for catch blocks
 
 // this call returns the entire object in order to utilise error handling
@@ -44,7 +50,6 @@ export const patchCommentVotes = (comment_id, votes) => {
     });
 };
 
-// this call returns the entire object in order to utilise error handling
 export const getUserProfile = (username) => {
   return newsAPI.get(`/users/${username}`).then((result) => {
     return result.data.user;
