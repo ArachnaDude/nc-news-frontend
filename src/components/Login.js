@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/user";
+import { getUserProfile } from "../utils/api";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -16,16 +17,10 @@ const Login = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     // console.log(`submitting ${input}`);
-    if (input === "jessjelly") {
-      setInput("");
-      setLoggedInUser({
-        username: "jessjelly",
-        name: "Jess Jelly",
-        avatar_url:
-          "https://s-media-cache-ak0.pinimg.com/564x/39/62/ec/3962eca164e60cf46f979c1f57d4078b.jpg",
-      });
-      navigate("/");
-    }
+    getUserProfile(input).then((res) => {
+      setLoggedInUser(res);
+    });
+    navigate("/");
 
     // add some conditional logic here - if successful navigate home
   };
