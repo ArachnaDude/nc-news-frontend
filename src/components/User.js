@@ -6,8 +6,8 @@ const User = () => {
   const { username } = useParams();
   const [currentUser, setCurrentUser] = useState({});
   useEffect(() => {
-    getUserProfile(username).then((userDataFromApi) => {
-      setCurrentUser(userDataFromApi);
+    getUserProfile(username).then(({ data }) => {
+      setCurrentUser(data.user);
     });
   }, [username]);
   return (

@@ -17,10 +17,15 @@ const Login = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     // console.log(`submitting ${input}`);
-    getUserProfile(input).then((res) => {
-      setLoggedInUser(res);
-    });
-    navigate("/");
+    getUserProfile(input)
+      .then(({ data }) => {
+        console.log(data.user);
+        setLoggedInUser(data.user);
+      })
+      .then(navigate("/"))
+      .catch(({ response }) => {
+        console.log(response, "catchblock");
+      });
 
     // add some conditional logic here - if successful navigate home
   };
@@ -30,7 +35,7 @@ const Login = () => {
 
       <form onSubmit={handleSubmit}>
         <label>
-          Username:{" "}
+          Username:
           <input
             value={input}
             type="text"
@@ -41,14 +46,22 @@ const Login = () => {
         </label>
         <br />
         <label>
-          Password: <input type="password" placeholder="Password" required />
+          Password:
+          <input type="password" placeholder="Password" required />
         </label>
         <br />
         <button type="submit">Log in</button>
       </form>
+
       <p>
-        For demo purposes log in with: <br />
-        username: jessjelly
+        valid usernames: <br />
+        jessjelly
+        <br />
+        happyamy2016
+        <br />
+        tickle122
+        <br />
+        grumpy19
         <br />
         password: admin
       </p>
