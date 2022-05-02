@@ -4,16 +4,28 @@ const newsAPI = axios.create({
   baseURL: "https://nc-news-full-backend.herokuapp.com/api",
 });
 
-export const getArticles = (topic) => {
-  return newsAPI.get("/articles", { params: { topic } }).then((result) => {
-    return result.data.articles;
+// my backend url: https://matts-nc-news-backend.herokuapp.com/api
+
+// example url: https://nc-news-full-backend.herokuapp.com/api
+
+// TODO - once backend is fixed & redeployed, switch over to my backend
+
+// TO DO destructure result into data and response for catch blocks
+
+// this call returns the entire object in order to utilise error handling
+export const getArticles = (topic, sort_by, order) => {
+  return newsAPI.get("/articles", { params: { topic, sort_by, order } });
+};
+
+export const getTopics = () => {
+  return newsAPI.get("/topics").then((result) => {
+    return result.data.topics;
   });
 };
 
+// this call returns the entire object in order to utilise error handling
 export const getSingleArticle = (article_id) => {
-  return newsAPI.get(`/articles/${article_id}`).then((result) => {
-    return result.data.article;
-  });
+  return newsAPI.get(`/articles/${article_id}`);
 };
 
 export const getComments = (article_id) => {
@@ -38,10 +50,9 @@ export const patchCommentVotes = (comment_id, votes) => {
     });
 };
 
+// this call returns the entire object in order to utilise error handling
 export const getUserProfile = (username) => {
-  return newsAPI.get(`/users/${username}`).then((result) => {
-    return result.data.user;
-  });
+  return newsAPI.get(`/users/${username}`);
 };
 
 export const postComment = (article_id, commentObj) => {

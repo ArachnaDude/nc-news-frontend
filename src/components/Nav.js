@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 const Nav = () => {
   return (
     <nav className="navBar">
-      Topics: <Link to="/articles/topics/football">Football</Link> |{" "}
-      <Link to="/articles/topics/cooking">Cooking</Link> |{" "}
-      <Link to="/articles/topics/coding">Coding</Link>
+      <Link to={"/"}>Home</Link>
+      <Link to={"/topics"}>Topics</Link>
+      <Link to={"/"}>Post New Article</Link>
     </nav>
   );
 };

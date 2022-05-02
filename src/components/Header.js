@@ -5,12 +5,6 @@ import { UserContext } from "../contexts/user";
 const Header = () => {
   const { loggedInUser, setLoggedInUser } = useContext(UserContext);
 
-  const guestUser = {
-    username: "jessjelly",
-    name: "Jess Jelly",
-    avatar_url:
-      "https://s-media-cache-ak0.pinimg.com/564x/39/62/ec/3962eca164e60cf46f979c1f57d4078b.jpg",
-  };
   return (
     <div className="headerDiv">
       <Link to="/">
@@ -21,15 +15,10 @@ const Header = () => {
 
       {!loggedInUser.username ? (
         <span className="headerDiv__login">
-          Don't forget to log in!
-          <button
-            className="headerDiv__button"
-            onClick={() => {
-              setLoggedInUser(guestUser);
-            }}
-          >
-            Log in
-          </button>
+          Don't forget to{" "}
+          <strong>
+            <Link to="/login">log in!</Link>
+          </strong>
         </span>
       ) : (
         <span className="headerDiv__loggedIn">

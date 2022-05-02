@@ -44,8 +44,8 @@ button {
 .navBar {
   display: flex;
   justify-content: space-evenly;
+  text-align: center;
   margin: auto;
-  width: 20rem;
 }
 
 .loadingMessage {
