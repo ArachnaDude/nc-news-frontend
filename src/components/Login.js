@@ -14,6 +14,7 @@ const Login = () => {
     setInput(event.target.value);
   };
 
+  // this needs to be in a useEffect somehow
   const handleSubmit = (event) => {
     event.preventDefault();
     // console.log(`submitting ${input}`);
@@ -22,7 +23,7 @@ const Login = () => {
         console.log(data.user);
         setLoggedInUser(data.user);
       })
-      .then(navigate("/"))
+      .then(navigate(-1))
       .catch(({ response }) => {
         console.log(response, "catchblock");
       });
