@@ -10,6 +10,16 @@ const Comment = ({ comment, comments, setComments }) => {
 
   const [localVote, setLocalVote] = useState(0);
 
+  const handleDelete = () => {
+    const filteredComments = comments.filter((remark) => {
+      return remark.comment_id !== comment.comment_id;
+    });
+    setComments(filteredComments);
+    deleteComment(comment.comment_id).then(() => {
+      console.log(`you deleted comment number ${comment.comment_id}`);
+    });
+  };
+
   const handleVotes = (clickDirection) => {
     setLocalVote((currentValue) => {
       return currentValue + clickDirection;
@@ -51,7 +61,8 @@ const Comment = ({ comment, comments, setComments }) => {
       {loggedInUser.username === comment.author ? (
         <button
           onClick={() => {
-            deleteComment(comment.comment_id);
+            handleDelete();
+            // deleteComment(comment.comment_id);
           }}
         >
           delete comment

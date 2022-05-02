@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { getSingleArticle, getComments, patchArticleVotes } from "../utils/api";
 import Comment from "./Comment";
 import { UserContext } from "../contexts/user";
@@ -34,6 +34,7 @@ const IndividualArticle = () => {
     getComments(article_id)
       .then((comments) => {
         setComments(comments);
+        console.log(comments, "comments in state - individual article");
       })
       .catch(({ response }) => {
         console.log(response, "comment response catchBlock");
@@ -65,7 +66,11 @@ const IndividualArticle = () => {
 
         {!loggedInUser.username ? (
           <p className="individualArticle__warning">
-            Please log in to vote or comment
+            Please{" "}
+            <Link to="/login">
+              <strong>log in</strong>
+            </Link>{" "}
+            to vote or comment
           </p>
         ) : (
           <>
