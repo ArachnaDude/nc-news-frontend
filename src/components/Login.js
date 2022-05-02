@@ -32,7 +32,6 @@ const Login = () => {
   return (
     <>
       <p>Logged in users can vote and comment on articles</p>
-
       <form onSubmit={handleSubmit}>
         <label>
           Username:
@@ -52,19 +51,14 @@ const Login = () => {
         <br />
         <button type="submit">Log in</button>
       </form>
-
-      <p>
-        valid usernames: <br />
-        jessjelly
-        <br />
-        happyamy2016
-        <br />
-        tickle122
-        <br />
-        grumpy19
-        <br />
-        password: admin
-      </p>
+      valid usernames: <br />
+      <ul>
+        <li>jessjelly</li>
+        <li>happyamy2016</li>
+        <li>grumpy19</li>
+        <li>tickle122</li>
+      </ul>
+      <p>password: admin</p>
     </>
   );
 };

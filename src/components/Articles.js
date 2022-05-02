@@ -46,7 +46,7 @@ const Articles = () => {
 
   return isLoading ? (
     <p className="loadingMessage">
-      Be with you in a second!{console.log("loading your content")}
+      Loading Articles{console.log("loading your content")}
     </p>
   ) : (
     <>
