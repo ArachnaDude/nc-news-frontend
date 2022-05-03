@@ -15,6 +15,7 @@ const IndividualArticle = () => {
   const [comments, setComments] = useState([]);
   const [localVote, setLocalVote] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+  const [disableVote, setDisableVote] = useState(false);
 
   const [error, setError] = useState(null);
 
@@ -27,25 +28,26 @@ const IndividualArticle = () => {
     getSingleArticle(article_id)
       .then(({ data }) => {
         setCurrentArticle(data.article);
+        setIsLoading(false);
       })
       .catch(({ response }) => {
         setError({ status: response.status, message: response.data.msg });
+        setIsLoading(false);
       });
     getComments(article_id)
       .then((comments) => {
         setComments(comments);
-        console.log(comments, "comments in state - individual article");
       })
       .catch(({ response }) => {
         console.log(response, "comment response catchBlock");
       });
-    setIsLoading(false);
   }, [article_id]);
 
   const handleVotes = (clickDirection) => {
     setLocalVote((currentValue) => {
       return currentValue + clickDirection;
     });
+    setDisableVote(true);
     patchArticleVotes(article_id, clickDirection);
   };
 
@@ -54,7 +56,9 @@ const IndividualArticle = () => {
   }
 
   return isLoading ? (
-    <p className="loadingMessage">Loading article</p>
+    <p className="loadingMessage">
+      Loading article{console.log("loading article")}
+    </p>
   ) : (
     <>
       <section className="individualArticle">
@@ -74,21 +78,28 @@ const IndividualArticle = () => {
           </p>
         ) : (
           <>
-            <p>Did you enjoy this content, {loggedInUser.username}?</p>
-            <button
-              onClick={() => {
-                handleVotes(1);
-              }}
-            >
-              Yes
-            </button>
-            <button
-              onClick={() => {
-                handleVotes(-1);
-              }}
-            >
-              No
-            </button>
+            {" "}
+            {disableVote ? (
+              <p>Thank you for voting, {loggedInUser.username}</p>
+            ) : (
+              <>
+                <p>Did you enjoy this content, {loggedInUser.username}?</p>
+                <button
+                  onClick={() => {
+                    handleVotes(1);
+                  }}
+                >
+                  Yes
+                </button>
+                <button
+                  onClick={() => {
+                    handleVotes(-1);
+                  }}
+                >
+                  No
+                </button>
+              </>
+            )}
             <ExpandableCommentButton>
               <CommentForm setComments={setComments} />
             </ExpandableCommentButton>

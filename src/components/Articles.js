@@ -33,11 +33,12 @@ const Articles = () => {
     getArticles(topic, sortBy, direction)
       .then(({ data }) => {
         setArticleList(data.articles);
+        setIsLoading(false);
       })
       .catch(({ response }) => {
         setError({ status: response.status, message: response.data.msg });
+        setIsLoading(false);
       });
-    setIsLoading(false);
   }, [topic, sortBy, direction]);
 
   if (error) {
