@@ -28,22 +28,6 @@ const Comment = ({ comment, comments, setComments }) => {
     patchCommentVotes(comment.comment_id, clickDirection);
   };
 
-  /*
-
-  if upvote -> disable upvote button && patch vote by +1
-
-  if downvote -> disable downvote button && patch vote by -1
-
-  if downvote AFTER upvote:
-  re-enable upvote
-  patch downvote by -2
-
-  if upvote AFTER downvote:
-  re-enable downvote
-  patch upvote by +2
-
-  */
-
   return (
     <li className="commentCard" key={comment.comment_id}>
       <p>
