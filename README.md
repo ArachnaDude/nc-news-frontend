@@ -10,6 +10,14 @@ Users can browse articles and topics, upvote or downvote content and comments, a
 
 ## Links
 
+### Backend:
+
+- Repo: https://github.com/ArachnaDude/nc-news-backend
+
+- Hosted version: https://matts-nc-news-backend.herokuapp.com/api
+
+### Frontend:
+
 - Repo:
 
 - Hosted version:
@@ -21,7 +29,6 @@ Users can browse articles and topics, upvote or downvote content and comments, a
 ## Minimum Requirements:
 
 - Node.js 17.x
-- React 17.x
 
 ## Cloning Repository
 
