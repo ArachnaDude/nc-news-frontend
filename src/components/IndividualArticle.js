@@ -28,10 +28,11 @@ const IndividualArticle = () => {
     getSingleArticle(article_id)
       .then(({ data }) => {
         setCurrentArticle(data.article);
-        setIsLoading(false);
       })
       .catch(({ response }) => {
         setError({ status: response.status, message: response.data.msg });
+      })
+      .finally(() => {
         setIsLoading(false);
       });
     getComments(article_id)
