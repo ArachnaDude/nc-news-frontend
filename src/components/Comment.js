@@ -37,7 +37,9 @@ const Comment = ({ comment, comments, setComments }) => {
         on {moment(comment.created_at).format("MMMM Do, YYYY")}
       </p>
       <p>{comment.body}</p>
-      <p>{comment.votes + localVote} votes</p>
+      <p>
+        <strong>{comment.votes + localVote}</strong> votes
+      </p>
 
       {!loggedInUser.username ||
       loggedInUser.username === comment.author ? null : (

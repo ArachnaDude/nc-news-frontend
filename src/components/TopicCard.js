@@ -5,9 +5,8 @@ const TopicCard = ({ topic }) => {
     <li className="topicCard">
       <p>
         <Link to={`/articles?topic=${topic.slug}`}>
-          <strong>{topic.slug}</strong>
-        </Link>{" "}
-        - {topic.description}
+          <strong>{topic.slug}</strong> - {topic.description}
+        </Link>
       </p>
     </li>
   );

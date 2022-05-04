@@ -108,7 +108,7 @@ button {
 .commentCard {
   border: solid rgb(255, 75, 216) 2px;
   list-style-type: none;
-  margin: 10px;
+  margin: 10px 10px 15px 10px;
   padding: 0.5rem;
   border-radius: 0 30px 30px 30px;
 }
