@@ -52,22 +52,24 @@ const Articles = () => {
     </p>
   ) : (
     <>
-      <label>
-        Sort By
-        <select value={sortBy} onChange={handleChangeSort}>
-          <option value="created_at">Date Created</option>
-          <option value="comment_count">Comment Count</option>
-          <option value="votes">Votes</option>
-        </select>
-      </label>
-      <label>
-        Change Order
-        <select value={direction} onChange={handleChangeOrder}>
-          <option value="desc">Descending</option>
-          <option value="asc">Ascending</option>
-        </select>
-      </label>
-      <h4>Viewing all {topic} articles</h4>
+      <div className="articles__sortbar">
+        <label>
+          Sort By
+          <select value={sortBy} onChange={handleChangeSort}>
+            <option value="created_at">Date Created</option>
+            <option value="comment_count">Comment Count</option>
+            <option value="votes">Votes</option>
+          </select>
+        </label>
+        <label>
+          Change Order
+          <select value={direction} onChange={handleChangeOrder}>
+            <option value="desc">Descending</option>
+            <option value="asc">Ascending</option>
+          </select>
+        </label>
+      </div>
+      <h4 className="topicHeader">Viewing all {topic} articles</h4>
       <ul className="articleList">
         {articleList.map((article) => {
           return <ArticleCard key={article.article_id} article={article} />;

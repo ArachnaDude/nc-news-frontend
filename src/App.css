@@ -4,6 +4,8 @@
   background-color: rgb(66, 66, 66);
   color: aliceblue;
   font-family: Poppins;
+  text-decoration: none;
+  list-style-type: none;
 }
 
 .App {
@@ -53,11 +55,22 @@ button {
   font-size: 2rem;
 }
 
+.errorMessage {
+  margin-top: 8rem;
+  text-align: center;
+}
+
 .commentSection__list {
   padding: 0;
 }
 
 .articleList {
+  padding: 0;
+  width: 80vw;
+  margin-left: 1rem;
+}
+
+.topicList {
   padding: 0;
   width: 80vw;
   margin-left: 1rem;
@@ -76,8 +89,12 @@ button {
   border-radius: 0 30px 30px 30px;
 }
 
-.articleCard a {
-  text-decoration: none;
+.topicCard {
+  border: solid rgb(255, 75, 216) 2px;
+  margin: 20px 5px 20px 5px;
+  padding: 0.5rem;
+  border-radius: 0 30px 30px 30px;
+  list-style-type: none;
 }
 
 .individualArticle {
@@ -94,4 +111,14 @@ button {
   margin: 10px;
   padding: 0.5rem;
   border-radius: 0 30px 30px 30px;
+}
+
+.articles__sortbar {
+  margin: 1rem;
+  text-align: justify;
+  padding: 0 4rem 0 4rem;
+}
+
+.topicHeader {
+  text-align: center;
 }

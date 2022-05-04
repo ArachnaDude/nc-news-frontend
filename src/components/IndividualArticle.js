@@ -66,7 +66,8 @@ const IndividualArticle = () => {
         <h2>{currentArticle.title}</h2>
         <p>{currentArticle.body}</p>
         <p>
-          This article has a popularity of {currentArticle.votes + localVote}{" "}
+          This article has a popularity of{" "}
+          <strong>{currentArticle.votes + localVote}</strong>{" "}
         </p>
 
         {!loggedInUser.username ? (

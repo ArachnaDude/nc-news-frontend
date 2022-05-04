@@ -19,7 +19,7 @@ const TopicList = () => {
       Loading topics{console.log("loading topics")}
     </p>
   ) : (
-    <ul>
+    <ul className="topicList">
       {topicsList.map((topic) => {
         return <TopicCard key={topic.slug} topic={topic} />;
       })}

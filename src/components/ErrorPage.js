@@ -6,12 +6,12 @@ const ErrorPage = ({ status, message }) => {
   };
 
   return (
-    <>
+    <div className="errorMessage">
       <p>
         <strong>{status || 404} error:</strong> {message || "page not found"}
       </p>
       <button onClick={handleClick}>Click here to go back</button>
-    </>
+    </div>
   );
 };
 
