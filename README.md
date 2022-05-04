@@ -10,17 +10,17 @@ Users can browse articles and topics, upvote or downvote content and comments, a
 
 ## Links
 
+### Frontend:
+
+- Repo: coming soon
+
+- Hosted version: coming soon
+
 ### Backend:
 
 - Repo: https://github.com/ArachnaDude/nc-news-backend
 
 - Hosted version: https://matts-nc-news-backend.herokuapp.com/api
-
-### Frontend:
-
-- Repo:
-
-- Hosted version:
 
 ---
 
