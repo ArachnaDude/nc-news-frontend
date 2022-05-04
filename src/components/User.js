@@ -16,7 +16,6 @@ const User = () => {
       })
       .catch(({ response }) => {
         setError({ status: response.status, message: response.data.msg });
-        console.log("welcome to the catch block, we got fun and games");
       });
   }, [username]);
 
