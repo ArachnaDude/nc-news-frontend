@@ -6,7 +6,7 @@ const ComingSoon = () => {
     navigate(-1);
   };
   return (
-    <div className="errorMessage">
+    <div className="genericMessage">
       <p>
         This feature is still in development. <br /> Check back soon!
       </p>

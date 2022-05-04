@@ -14,6 +14,7 @@ import Login from "./components/Login";
 import User from "./components/User";
 import TopicList from "./components/TopicList";
 import ErrorPage from "./components/ErrorPage";
+import ComingSoon from "./components/ComingSoon";
 
 function App() {
   // default logged in user - ALWAYS passes in with "value" in .Provider wrapper
@@ -33,6 +34,7 @@ function App() {
             />
             <Route path="/topics" element={<TopicList />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/coming_soon" element={<ComingSoon />} />
             <Route path="/users/:username" element={<User />} />
             <Route path="*" element={<ErrorPage />} />
           </Routes>

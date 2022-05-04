@@ -1,8 +1,12 @@
+// React imports
 import { useState, useEffect, useContext } from "react";
 import { useParams, Link } from "react-router-dom";
+// Utils
 import { getSingleArticle, getComments, patchArticleVotes } from "../utils/api";
-import Comment from "./Comment";
+// Contexts
 import { UserContext } from "../contexts/user";
+// Components
+import Comment from "./Comment";
 import ExpandableCommentButton from "./ExpandableCommentButton";
 import CommentForm from "./CommentForm";
 import ErrorPage from "./ErrorPage";

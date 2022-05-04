@@ -21,6 +21,14 @@
   text-decoration: none;
 }
 
+.headerDiv__profilePic {
+  position: relative;
+  top: 8px;
+  height: 30px;
+  width: 30px;
+  border-radius: 100px;
+}
+
 .headerDiv__h1 {
   text-shadow: 0.3rem 0.3rem 0.5rem rgb(255, 75, 216);
   font-size: 5rem;
@@ -29,6 +37,7 @@
 
 .headerDiv__h3 {
   margin-block: auto;
+  margin-bottom: 15px;
 }
 
 a {
@@ -55,7 +64,7 @@ button {
   font-size: 2rem;
 }
 
-.errorMessage {
+.genericMessage {
   margin-top: 8rem;
   text-align: center;
 }
@@ -132,4 +141,9 @@ button {
   display: flex;
   margin-left: auto;
   margin-right: auto;
+}
+
+.profilePage {
+  text-align: center;
+  margin-top: 3rem;
 }

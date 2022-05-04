@@ -16,7 +16,8 @@ const ArticleCard = ({ article }) => {
         on {moment(article.created_at).format("MMMM Do, YYYY")}
       </p>
       <p>
-        comments: {article.comment_count} | popularity: {article.votes}
+        comments: <strong>{article.comment_count}</strong> | popularity:{" "}
+        <strong>{article.votes}</strong>
       </p>
     </li>
   );

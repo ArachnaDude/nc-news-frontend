@@ -69,7 +69,7 @@ const Articles = () => {
           </select>
         </label>
       </div>
-      <h4 className="topicHeader">Viewing all {topic} articles</h4>
+      <h3 className="topicHeader">Viewing all {topic} articles</h3>
       <ul className="articleList">
         {articleList.map((article) => {
           return <ArticleCard key={article.article_id} article={article} />;

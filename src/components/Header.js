@@ -32,8 +32,6 @@ const Header = () => {
             className="headerDiv__profilePic"
             src={loggedInUser.avatar_url}
             alt="profilepic"
-            height={20}
-            width={20}
           />
           <button
             className="headerDiv__button"

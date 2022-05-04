@@ -6,7 +6,7 @@ const ErrorPage = ({ status, message }) => {
   };
 
   return (
-    <div className="errorMessage">
+    <div className="genericMessage">
       <p>
         <strong>{status || 404} error:</strong> {message || "page not found"}
       </p>
