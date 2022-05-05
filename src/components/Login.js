@@ -1,18 +1,25 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/user";
-import { getUserProfile } from "../utils/api";
+import { getAllUsers, getUserProfile } from "../utils/api";
 import ErrorPage from "./ErrorPage";
 
 const Login = () => {
   const navigate = useNavigate();
   const [input, setInput] = useState("");
   const [error, setError] = useState(null);
+  const [allUsers, setAllUsers] = useState([]);
+
+  useEffect(() => {
+    getAllUsers().then((result) => {
+      console.log(result);
+      setAllUsers(result);
+    });
+  }, []);
 
   const { setLoggedInUser } = useContext(UserContext);
 
   const handleChange = (event) => {
-    // console.log(event.target.value);
     setInput(event.target.value);
   };
 
@@ -38,7 +45,7 @@ const Login = () => {
     return <ErrorPage status={error.status} message={error.message} />;
   }
   return (
-    <>
+    <div className="loginPage">
       <p>Logged in users can vote and comment on articles</p>
       <form onSubmit={handleSubmit}>
         <label>
@@ -67,7 +74,7 @@ const Login = () => {
         <li>tickle122</li>
       </ul>
       <p>password: admin</p>
-    </>
+    </div>
   );
 };
 export default Login;

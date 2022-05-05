@@ -147,3 +147,12 @@ button {
   text-align: center;
   margin-top: 3rem;
 }
+
+.loginPage {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.loginPage button {
+  margin-top: 2rem;
+}
