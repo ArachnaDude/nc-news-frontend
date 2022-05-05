@@ -20,6 +20,7 @@ const CommentForm = ({ setComments }) => {
 
     if (validComment) {
       postComment(article_id, commentObj).then((res) => {
+        console.log(res, "res");
         setComments((currentComments) => {
           return [res, ...currentComments];
         });

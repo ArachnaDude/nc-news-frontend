@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const newsAPI = axios.create({
-  baseURL: "https://nc-news-full-backend.herokuapp.com/api",
+  baseURL: "https://matts-nc-news-backend.herokuapp.com/api",
 });
 
 // my backend url: https://matts-nc-news-backend.herokuapp.com/api
@@ -59,6 +59,7 @@ export const postComment = (article_id, commentObj) => {
   return newsAPI
     .post(`articles/${article_id}/comments`, commentObj)
     .then((result) => {
+      console.log(result.data);
       return result.data.comment;
     });
 };

@@ -2,10 +2,12 @@ import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/user";
 import { getUserProfile } from "../utils/api";
+import ErrorPage from "./ErrorPage";
 
 const Login = () => {
   const navigate = useNavigate();
   const [input, setInput] = useState("");
+  const [error, setError] = useState(null);
 
   const { setLoggedInUser } = useContext(UserContext);
 
@@ -17,7 +19,7 @@ const Login = () => {
   // this needs to be in a useEffect somehow
   const handleSubmit = (event) => {
     event.preventDefault();
-    // console.log(`submitting ${input}`);
+
     getUserProfile(input)
       .then(({ data }) => {
         console.log(data.user);
@@ -26,10 +28,15 @@ const Login = () => {
       .then(navigate(-1))
       .catch(({ response }) => {
         console.log(response, "catchblock");
+        setError({ status: response.status, message: response.data.message });
       });
 
     // add some conditional logic here - if successful navigate home
   };
+
+  if (error) {
+    return <ErrorPage status={error.status} message={error.message} />;
+  }
   return (
     <>
       <p>Logged in users can vote and comment on articles</p>

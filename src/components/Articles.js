@@ -35,7 +35,7 @@ const Articles = () => {
         setArticleList(data.articles);
       })
       .catch(({ response }) => {
-        setError({ status: response.status, message: response.data.msg });
+        setError({ status: response.status, message: response.data.message });
       })
       .finally(() => {
         setIsLoading(false);
