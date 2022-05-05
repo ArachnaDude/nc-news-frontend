@@ -8,6 +8,7 @@ const User = () => {
   const navigate = useNavigate();
   const { loggedInUser } = useContext(UserContext);
   const { username } = useParams();
+
   const [currentUser, setCurrentUser] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
