@@ -10,8 +10,7 @@ const Comment = ({ comment, comments, setComments }) => {
 
   const [localVote, setLocalVote] = useState(0);
 
-  const [disableUpvote, setDisableUpvote] = useState(false);
-  const [disableDownvote, setDisableDownvote] = useState(false);
+  const [disableVote, setDisableVote] = useState(false);
 
   const handleDelete = () => {
     const filteredComments = comments.filter((c) => {
@@ -25,6 +24,7 @@ const Comment = ({ comment, comments, setComments }) => {
     setLocalVote((currentValue) => {
       return currentValue + clickDirection;
     });
+    setDisableVote(true);
     patchCommentVotes(comment.comment_id, clickDirection);
   };
 
@@ -44,35 +44,31 @@ const Comment = ({ comment, comments, setComments }) => {
       {!loggedInUser.username ||
       loggedInUser.username === comment.author ? null : (
         <>
-          <button
-            disabled={disableUpvote}
-            onClick={() => {
-              handleVotes(1);
-              setDisableUpvote(true);
-              if (disableDownvote) {
-                handleVotes(1);
-                setDisableDownvote(false);
-              }
-            }}
-          >
-            upvote this comment
-          </button>
-          <button
-            disabled={disableDownvote}
-            onClick={() => {
-              handleVotes(-1);
-              setDisableDownvote(true);
-              if (disableUpvote) {
-                handleVotes(-1);
-                setDisableUpvote(false);
-              }
-            }}
-          >
-            downvote this comment
-          </button>
+          {" "}
+          {disableVote ? (
+            <p>Thank you for voting, {loggedInUser.username}</p>
+          ) : (
+            <>
+              <button
+                disabled={disableVote}
+                onClick={() => {
+                  handleVotes(1);
+                }}
+              >
+                upvote this comment
+              </button>
+              <button
+                disabled={disableVote}
+                onClick={() => {
+                  handleVotes(-1);
+                }}
+              >
+                downvote this comment
+              </button>
+            </>
+          )}
         </>
       )}
-
       {loggedInUser.username === comment.author ? (
         <button
           onClick={() => {

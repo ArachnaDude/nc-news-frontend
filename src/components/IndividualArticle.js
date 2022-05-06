@@ -35,7 +35,7 @@ const IndividualArticle = () => {
       })
       .catch(({ response }) => {
         console.log(response.data);
-        setError({ status: response.status, message: response.data.message });
+        setError({ status: response.status, message: response.data.messasge });
       })
       .finally(() => {
         setIsLoading(false);
