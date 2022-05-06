@@ -14,7 +14,7 @@ Users can browse articles and topics, upvote or downvote content and comments, a
 
 - Repo: https://github.com/ArachnaDude/nc-news-frontend.git
 
-- Hosted version: coming soon
+- Hosted version: https://matts-nc-news-frontend.netlify.app
 
 ### Backend:
 
