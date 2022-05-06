@@ -12,7 +12,7 @@ Users can browse articles and topics, upvote or downvote content and comments, a
 
 ### Frontend:
 
-- Repo: coming soon
+- Repo: https://github.com/ArachnaDude/nc-news-frontend.git
 
 - Hosted version: coming soon
 
@@ -35,8 +35,8 @@ Users can browse articles and topics, upvote or downvote content and comments, a
 Input the following commands into your terminal's CLI:
 
 ```
-$ git clone
-$ cd
+$ git clone https://github.com/ArachnaDude/nc-news-frontend.git
+$ cd nc-news-frontend
 ```
 
 ## Installing Dependencies
