@@ -1,7 +1,11 @@
+//React imports
 import { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+//Contexts
 import { UserContext } from "../contexts/user";
+//Utils
 import { getUserProfile } from "../utils/api";
+//Components
 import ErrorPage from "./ErrorPage";
 
 const User = () => {
@@ -35,9 +39,7 @@ const User = () => {
     return <ErrorPage status={error.status} message={error.message} />;
   }
   return isLoading ? (
-    <p className="loadingMessage">
-      Loading user profile{console.log("loading user profile")}
-    </p>
+    <p className="loadingMessage">Loading user profile</p>
   ) : (
     <div className="profilePage">
       <button onClick={handleClick}>Click here to go back</button>
@@ -59,8 +61,9 @@ const User = () => {
         <strong>Name:</strong> {currentUser.name}
       </p>
 
-      <p>list of articles by {currentUser.username} </p>
-      <p>list of comments by {currentUser.username}</p>
+      <p>
+        Articles and comments authored by {currentUser.username} coming soon{" "}
+      </p>
     </div>
   );
 };

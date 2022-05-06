@@ -1,7 +1,10 @@
+// React imports
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
+// Utils
 import { getArticles } from "../utils/api";
 import ArticleCard from "./ArticleCard";
+//Components
 import ErrorPage from "./ErrorPage";
 
 const Articles = () => {
@@ -47,9 +50,7 @@ const Articles = () => {
   }
 
   return isLoading ? (
-    <p className="loadingMessage">
-      Loading Articles{console.log("loading your content")}
-    </p>
+    <p className="loadingMessage">Loading Articles</p>
   ) : (
     <>
       <div className="articles__sortbar">

@@ -34,7 +34,6 @@ const IndividualArticle = () => {
         setCurrentArticle(data.article);
       })
       .catch(({ response }) => {
-        console.log(response.data);
         setError({ status: response.status, message: response.data.messasge });
       })
       .finally(() => {
@@ -62,9 +61,7 @@ const IndividualArticle = () => {
   }
 
   return isLoading ? (
-    <p className="loadingMessage">
-      Loading article{console.log("loading article")}
-    </p>
+    <p className="loadingMessage">Loading article</p>
   ) : (
     <>
       <section className="individualArticle">

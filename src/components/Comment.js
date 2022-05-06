@@ -1,8 +1,12 @@
-import { useState, useContext, useEffect } from "react";
-import { patchCommentVotes } from "../utils/api";
-import { UserContext } from "../contexts/user";
+//React imports
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
+//Contexts
+import { UserContext } from "../contexts/user";
+//Utils
 import { deleteComment } from "../utils/api";
+import { patchCommentVotes } from "../utils/api";
+//Time formatting
 import moment from "moment";
 
 const Comment = ({ comment, comments, setComments }) => {

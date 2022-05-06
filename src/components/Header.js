@@ -1,5 +1,7 @@
+//React imports
 import { Link } from "react-router-dom";
-import { useState, useContext } from "react";
+import { useContext } from "react";
+//Contexts
 import { UserContext } from "../contexts/user";
 
 const Header = () => {
