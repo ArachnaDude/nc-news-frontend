@@ -4,7 +4,7 @@ Catch up on all the best news the internet has to offer.
 
 ## Project Summary
 
-This frontend project connects to the REST API for "NC-News", a reddit-style content aggregation site.
+This frontend project was built in React, and connects to the REST API for "NC-News", a reddit-style content aggregation site.
 
 Users can browse articles and topics, upvote or downvote content and comments, and add or delete comments.
 
