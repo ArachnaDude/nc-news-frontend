@@ -64,11 +64,6 @@ const Login = () => {
           />
         </label>
         <br />
-        <label>
-          Password:
-          <input type="password" placeholder="Password" required />
-        </label>
-        <br />
         <button type="submit">Log in</button>
       </form>
       valid usernames: <br />
@@ -80,7 +75,7 @@ const Login = () => {
         <li>cooljmessy</li>
         <li>weegembump</li>
       </ul>
-      <p>password: admin</p>
+      <p>Password authentication is not required</p>
     </div>
   );
 };
