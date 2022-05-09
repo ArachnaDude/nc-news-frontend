@@ -8,10 +8,6 @@ const newsAPI = axios.create({
 
 // example url: https://nc-news-full-backend.herokuapp.com/api
 
-// TODO - once backend is fixed & redeployed, switch over to my backend
-
-// TO DO destructure result into data and response for catch blocks
-
 // this call returns the entire object in order to utilise error handling
 export const getArticles = (topic, sort_by, order) => {
   return newsAPI.get("/articles", { params: { topic, sort_by, order } });
