@@ -65,7 +65,6 @@ export const postComment = (article_id, commentObj) => {
   return newsAPI
     .post(`articles/${article_id}/comments`, commentObj)
     .then((result) => {
-      console.log(result.data);
       return result.data.comment;
     });
 };
