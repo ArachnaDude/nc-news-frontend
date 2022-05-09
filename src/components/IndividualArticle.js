@@ -39,13 +39,9 @@ const IndividualArticle = () => {
       .finally(() => {
         setIsLoading(false);
       });
-    getComments(article_id)
-      .then((comments) => {
-        setComments(comments);
-      })
-      .catch(({ response }) => {
-        console.log(response, "comment response catchBlock");
-      });
+    getComments(article_id).then((comments) => {
+      setComments(comments);
+    });
   }, [article_id]);
 
   const handleVotes = (clickDirection) => {
