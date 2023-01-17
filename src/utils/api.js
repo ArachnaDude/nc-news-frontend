@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const newsAPI = axios.create({
-  baseURL: "https://matts-nc-news-backend.herokuapp.com/api",
+  baseURL: "https://nc-news-backend-13fj.onrender.com/api",
 });
 
 // my backend url: https://matts-nc-news-backend.herokuapp.com/api
